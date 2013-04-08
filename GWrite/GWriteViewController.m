@@ -25,6 +25,9 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHiiden:) name:UIKeyboardWillHideNotification object:nil];
+    //
+    NSLog(@"tt0001m_: %@", [UIFont fontNamesForFamilyName:@"Inconsolata"]);
+    [self.textView setFont:[UIFont fontWithName:@"Inconsolata" size:self.textView.font.pointSize]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
