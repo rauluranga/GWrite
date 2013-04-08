@@ -1,23 +1,149 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Write View Controller-->
         <scene sceneID="4">
             <objects>
                 <viewController id="2" customClass="GWriteViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBC-6Y-Cuu">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Dillinger
+=========
+
+Dillinger is a cloud-enabled HTML5 Markdown editor.
+
+  - Type some Markdown text in the left window
+  - See the HTML in the right
+  - Magic
+
+Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site] [1]:
+
+> The overriding design goal for Markdown's
+> formatting syntax is to make it as readable 
+> as possible. The idea is that a
+> Markdown-formatted document should be
+> publishable as-is, as plain text, without
+> looking like it's been marked up with tags
+> or formatting instructions.
+
+This text your see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.  
+
+Version
+-
+
+2.0
+
+Tech
+-----------
+
+Dillinger uses a number of open source projects to work properly:
+
+* [Ace Editor] - awesome web-based text editor
+* [Showdown] - a port of Markdown to JavaScript
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [node.js] - evented I/O for the backend
+* [Express] - fast node.js network app framework [@tjholowaychuk]
+* [keymaster.js] - awesome keyboard handler lib by [@thomasfuchs]
+* [jQuery] - duh 
+
+Installation
+--------------
+
+1. Clone the repo
+2. `cd dillinger`
+3. `npm i`
+4. `mkdir -p public/files`
+5. `mkdir -p public/files/md &amp;&amp; mkdir -p public/files/html`
+6. `node app`
+
+
+License
+-
+
+MIT
+
+*Free Software, Fuck Yeah!*
+
+  [john gruber]: http://daringfireball.net/
+  [@thomasfuchs]: http://twitter.com/thomasfuchs
+  [1]: http://daringfireball.net/projects/markdown/
+  [showdown]: https://github.com/coreyti/showdown
+  [ace editor]: http://ace.ajax.org
+  [node.js]: http://nodejs.org
+  [Twitter Bootstrap]: http://twitter.github.com/bootstrap/
+  [keymaster.js]: https://github.com/madrobby/keymaster
+  [jQuery]: http://jquery.com  
+  [@tjholowaychuk]: http://twitter.com/tjholowaychuk
+  [express]: http://expressjs.com
+  </mutableString>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfs-Cv-k92">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSx-CM-ufC">
+                                <items>
+                                    <barButtonItem title="Item" id="AXx-Q2-snb"/>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbG-pH-H4e">
+                                <color key="backgroundColor" red="0.62909731657608692" green="0.62909731657608692" blue="0.62909731657608692" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" type="user" id="tgD-RU-KrH"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57282329262696208" blue="0.32932600681974789" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dSx-CM-ufC" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="3S8-Yb-1F2"/>
+                            <constraint firstItem="qbG-pH-H4e" firstAttribute="top" secondItem="Wfs-Cv-k92" secondAttribute="top" type="default" id="41I-cj-aZQ"/>
+                            <constraint firstItem="qbG-pH-H4e" firstAttribute="top" secondItem="yBC-6Y-Cuu" secondAttribute="top" type="default" id="Ai6-lz-QZp"/>
+                            <constraint firstItem="dSx-CM-ufC" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="MXf-fG-D8h"/>
+                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="QT6-xM-CH0"/>
+                            <constraint firstItem="qbG-pH-H4e" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="Tgn-Cd-kuh"/>
+                            <constraint firstItem="qbG-pH-H4e" firstAttribute="leading" secondItem="yBC-6Y-Cuu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Xvc-LP-9X7"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="cBO-pI-lA1"/>
+                            <constraint firstItem="dSx-CM-ufC" firstAttribute="centerX" secondItem="qbG-pH-H4e" secondAttribute="centerX" type="default" id="nvp-k0-A7D"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="leading" secondItem="qbG-pH-H4e" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pQB-QN-fy1"/>
+                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="tdr-Oz-gbC"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="uJU-TX-IJn"/>
+                            <constraint firstItem="dSx-CM-ufC" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="vAY-Gn-Px0"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="top" secondItem="dSx-CM-ufC" secondAttribute="bottom" type="default" id="vGx-6x-BCT"/>
+                        </constraints>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="splitView" destination="qbG-pH-H4e" id="tYQ-rH-k6q"/>
+                        <outlet property="textView" destination="yBC-6Y-Cuu" id="XIz-6Z-TMf"/>
+                        <outlet property="webView" destination="Wfs-Cv-k92" id="gvW-Wh-Ufs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-72" y="-490"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="GWriteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="splitView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
