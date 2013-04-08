@@ -26,13 +26,18 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    // Do any additional setup after loading the view, typically from a nib.
-        
+    
     id html = [SundownWrapper convertMarkdownString:self.textView.text];
     NSLog(@"html: %@", html);
-    //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
     
-    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@""]];
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    
+    //NSString *sampleHTML = @"<!DOCTYPE html><html><head><link rel=\"stylesheet\" href=\"bootstrap.min.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"main.css\" type=\"text/css\" /></head><body><h1>My First Heading</h1><p>My first paragraph.</p></body></html>";
+    
+    NSString *sampleHTML = [NSString stringWithFormat:@"<!DOCTYPE html><html><head><link rel='stylesheet' href='bootstrap.min.css' type='text/css' /><link rel='stylesheet' href='main.css' type='text/css' /></head><body>%@</body></html>", html];
+    
+    [self.webView loadHTMLString:sampleHTML baseURL:baseURL];
 }
 
 - (void)didReceiveMemoryWarning
