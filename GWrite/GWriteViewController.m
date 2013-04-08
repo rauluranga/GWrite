@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIImageView *splitView;
+@property (assign, nonatomic) CGRect textViewFrame;
 
 @end
 
@@ -21,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHiiden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -70,6 +73,28 @@
         });
     });
     
+}
+
+- (void)keyboardShown:(NSNotification *)note {
+    
+    CGRect keyboardFrame;
+    [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+    CGRect frame =  self.textViewFrame = self.textView.frame;
+    
+    float offset = keyboardFrame.size.height;
+    
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+        NSLog(@"code for landscape orientation");
+        offset = keyboardFrame.size.width;
+    }
+    
+    frame.size.height -= offset;
+    [self.textView setFrame:frame];
+}
+
+- (void)keyboardHiiden:(NSNotification *)note {
+    
+    [self.textView setFrame:self.textViewFrame];
 }
 
 #pragma mark -
