@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIImageView *splitView;
 @property (assign, nonatomic) CGRect textViewFrame;
+@property (assign, nonatomic) CGRect webViewFrame;
 
 @end
 
@@ -24,6 +25,11 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHiiden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -75,26 +81,41 @@
     
 }
 
-- (void)keyboardShown:(NSNotification *)note {
+-(void) resizeViewFromKeyboardFrame:(CGRect)keyboardFrame view:(UIView *)theView {
     
-    CGRect keyboardFrame;
-    [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
-    CGRect frame =  self.textViewFrame = self.textView.frame;
+    CGRect frame =  theView.frame;
     
     float offset = keyboardFrame.size.height;
-    
-    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+    //[UIDevice currentDevice].orientation
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
         NSLog(@"code for landscape orientation");
         offset = keyboardFrame.size.width;
     }
     
     frame.size.height -= offset;
-    [self.textView setFrame:frame];
+    [theView setFrame:frame];
+    
+    //What is the height of iPad's onscreen keyboard?
+    //The portrait height is 264 while the landscape height is 352.
+}
+
+
+- (void)keyboardShown:(NSNotification *)note {
+    
+    CGRect keyboardFrame;
+    [[[note userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+   
+    self.textViewFrame = self.textView.frame;
+    self.webViewFrame = self.webView.frame;
+    
+    [self resizeViewFromKeyboardFrame:keyboardFrame view:self.textView];
+    [self resizeViewFromKeyboardFrame:keyboardFrame view:self.webView];
 }
 
 - (void)keyboardHiiden:(NSNotification *)note {
     
     [self.textView setFrame:self.textViewFrame];
+    [self.webView setFrame:self.webViewFrame];
 }
 
 #pragma mark -
