@@ -97,29 +97,29 @@ MIT
                                     <barButtonItem title="Item" id="AXx-Q2-snb"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbG-pH-H4e">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbG-pH-H4e" customClass="DraggableUIImageView">
                                 <color key="backgroundColor" red="0.62909731657608692" green="0.62909731657608692" blue="0.62909731657608692" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" type="user" id="tgD-RU-KrH"/>
+                                    <constraint firstAttribute="width" constant="20" id="xZD-bU-csU"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57282329262696208" blue="0.32932600681974789" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dSx-CM-ufC" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="3S8-Yb-1F2"/>
-                            <constraint firstItem="qbG-pH-H4e" firstAttribute="top" secondItem="Wfs-Cv-k92" secondAttribute="top" type="default" id="41I-cj-aZQ"/>
-                            <constraint firstItem="qbG-pH-H4e" firstAttribute="top" secondItem="yBC-6Y-Cuu" secondAttribute="top" type="default" id="Ai6-lz-QZp"/>
+                            <constraint firstItem="qbG-pH-H4e" firstAttribute="top" secondItem="dSx-CM-ufC" secondAttribute="bottom" type="default" id="AVZ-Bd-Ceq"/>
+                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="top" secondItem="qbG-pH-H4e" secondAttribute="top" type="default" id="Ary-xZ-wOw"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="leading" secondItem="qbG-pH-H4e" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Cbl-3a-SrW"/>
+                            <constraint firstItem="qbG-pH-H4e" firstAttribute="centerX" secondItem="dSx-CM-ufC" secondAttribute="centerX" type="default" id="GNY-eV-XzL"/>
                             <constraint firstItem="dSx-CM-ufC" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="MXf-fG-D8h"/>
-                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="QT6-xM-CH0"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="S4F-4O-ciJ"/>
                             <constraint firstItem="qbG-pH-H4e" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="Tgn-Cd-kuh"/>
-                            <constraint firstItem="qbG-pH-H4e" firstAttribute="leading" secondItem="yBC-6Y-Cuu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Xvc-LP-9X7"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="cBO-pI-lA1"/>
-                            <constraint firstItem="dSx-CM-ufC" firstAttribute="centerX" secondItem="qbG-pH-H4e" secondAttribute="centerX" type="default" id="nvp-k0-A7D"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="leading" secondItem="qbG-pH-H4e" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pQB-QN-fy1"/>
-                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="tdr-Oz-gbC"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="uJU-TX-IJn"/>
+                            <constraint firstItem="qbG-pH-H4e" firstAttribute="leading" secondItem="yBC-6Y-Cuu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="YqQ-i7-XHX"/>
+                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="bDe-af-aCX"/>
+                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="ftF-Wl-ZuO"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="top" secondItem="qbG-pH-H4e" secondAttribute="top" type="default" id="gEC-iz-Ac6"/>
+                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="gYQ-ix-ZPI"/>
                             <constraint firstItem="dSx-CM-ufC" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="vAY-Gn-Px0"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="top" secondItem="dSx-CM-ufC" secondAttribute="bottom" type="default" id="vGx-6x-BCT"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -135,6 +135,9 @@ MIT
         </scene>
     </scenes>
     <classes>
+        <class className="DraggableUIImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DraggableUIImageView.h"/>
+        </class>
         <class className="GWriteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
             <relationships>

@@ -26,8 +26,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHiiden:) name:UIKeyboardWillHideNotification object:nil];
     //
-    NSLog(@"tt0001m_: %@", [UIFont fontNamesForFamilyName:@"Inconsolata"]);
+    //Setup Inconsolata font
     [self.textView setFont:[UIFont fontWithName:@"Inconsolata" size:self.textView.font.pointSize]];
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"pattern"]];
+    [self.splitView setBackgroundColor:backgroundColor];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -58,7 +61,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void) refresh {
@@ -97,11 +99,11 @@
     
     frame.size.height -= offset;
     [theView setFrame:frame];
-    
-    //What is the height of iPad's onscreen keyboard?
-    //The portrait height is 264 while the landscape height is 352.
+
 }
 
+#pragma mark -
+#pragma mark UIKeyboard Notifications
 
 - (void)keyboardShown:(NSNotification *)note {
     

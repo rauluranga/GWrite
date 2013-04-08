@@ -27,6 +27,9 @@
 		C4C34B4B171332EF00B31C68 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = C4C34B4A171332EF00B31C68 /* main.css */; };
 		C4C34B4F1713370300B31C68 /* bootstrap.min.css in Resources */ = {isa = PBXBuildFile; fileRef = C4C34B4E1713370300B31C68 /* bootstrap.min.css */; };
 		C4C34B53171379C400B31C68 /* Inconsolata.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4C34B52171379C400B31C68 /* Inconsolata.otf */; };
+		C4C34B56171381F800B31C68 /* DraggableUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C34B55171381F800B31C68 /* DraggableUIImageView.m */; };
+		C4C34B5D17138B9B00B31C68 /* pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C34B5B17138B9B00B31C68 /* pattern.png */; };
+		C4C34B5E17138B9B00B31C68 /* pattern@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C34B5C17138B9B00B31C68 /* pattern@2X.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,10 @@
 		C4C34B4A171332EF00B31C68 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
 		C4C34B4E1713370300B31C68 /* bootstrap.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = bootstrap.min.css; sourceTree = "<group>"; };
 		C4C34B52171379C400B31C68 /* Inconsolata.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.otf; sourceTree = "<group>"; };
+		C4C34B54171381F800B31C68 /* DraggableUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableUIImageView.h; sourceTree = "<group>"; };
+		C4C34B55171381F800B31C68 /* DraggableUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableUIImageView.m; sourceTree = "<group>"; };
+		C4C34B5B17138B9B00B31C68 /* pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pattern.png; sourceTree = "<group>"; };
+		C4C34B5C17138B9B00B31C68 /* pattern@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pattern@2X.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +136,8 @@
 		C49EC2D9170F55CA00DB1219 /* GWrite */ = {
 			isa = PBXGroup;
 			children = (
+				C4C34B54171381F800B31C68 /* DraggableUIImageView.h */,
+				C4C34B55171381F800B31C68 /* DraggableUIImageView.m */,
 				C49EC2E2170F55CA00DB1219 /* GWriteAppDelegate.h */,
 				C49EC2E3170F55CA00DB1219 /* GWriteAppDelegate.m */,
 				C49EC2EB170F55CA00DB1219 /* MainStoryboard.storyboard */,
@@ -142,6 +151,8 @@
 		C49EC2DA170F55CA00DB1219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C4C34B5B17138B9B00B31C68 /* pattern.png */,
+				C4C34B5C17138B9B00B31C68 /* pattern@2X.png */,
 				C4C34B52171379C400B31C68 /* Inconsolata.otf */,
 				C4C34B4E1713370300B31C68 /* bootstrap.min.css */,
 				C4C34B4A171332EF00B31C68 /* main.css */,
@@ -256,6 +267,8 @@
 				C4C34B4B171332EF00B31C68 /* main.css in Resources */,
 				C4C34B4F1713370300B31C68 /* bootstrap.min.css in Resources */,
 				C4C34B53171379C400B31C68 /* Inconsolata.otf in Resources */,
+				C4C34B5D17138B9B00B31C68 /* pattern.png in Resources */,
+				C4C34B5E17138B9B00B31C68 /* pattern@2X.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +320,7 @@
 				C49EC2E0170F55CA00DB1219 /* main.m in Sources */,
 				C49EC2E4170F55CA00DB1219 /* GWriteAppDelegate.m in Sources */,
 				C49EC2F0170F55CA00DB1219 /* GWriteViewController.m in Sources */,
+				C4C34B56171381F800B31C68 /* DraggableUIImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
