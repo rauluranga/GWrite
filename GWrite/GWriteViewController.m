@@ -25,9 +25,10 @@
 @synthesize draggableImageViewCenter = _draggableImageViewCenter;
 @synthesize refresTimer = _refresTimer;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHiiden:) name:UIKeyboardWillHideNotification object:nil];
     //
@@ -42,44 +43,32 @@
         
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void) viewWillAppear:(BOOL)animated
-{
+-(void) viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
-    
-    /*/
-    id html = [SundownWrapper convertMarkdownString:self.textView.text];
-    //NSLog(@"html: %@", html);
-    
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSURL *baseURL = [NSURL fileURLWithPath:path];
-    
-    //NSString *sampleHTML = @"<!DOCTYPE html><html><head><link rel=\"stylesheet\" href=\"bootstrap.min.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"main.css\" type=\"text/css\" /></head><body><h1>My First Heading</h1><p>My first paragraph.</p></body></html>";
-    
-    NSString *sampleHTML = [NSString stringWithFormat:@"<!DOCTYPE html><html><head><link rel='stylesheet' href='bootstrap.min.css' type='text/css' /><link rel='stylesheet' href='main.css' type='text/css' /></head><body>%@</body></html>", html];
-    
-    [self.webView loadHTMLString:sampleHTML baseURL:baseURL];
-    //*/
-    [self refresh];
+    [self updateWebView];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
+    
     [super viewDidAppear:animated];
     [self setDraggableImageViewCenter:self.splitView.center];
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
 }
 
 //TODO repleace magic numbers
 -(void) updateUI {
+    
     CGRect frame = self.textView.frame;
     CGFloat targetWidth = self.draggableImageViewCenter.x - 20/2 - 8;
     if (targetWidth < 1) {
@@ -97,7 +86,7 @@
 }
 
 
--(void) refresh {
+-(void) updateWebView {
     
     NSString *rawText = self.textView.text;
     
@@ -136,36 +125,8 @@
 
 }
 
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
-}
-
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
     [self setDraggableImageViewCenter:self.splitView.center];
-  
-//    NSLog(@"splitViewFrame: %@",  NSStringFromCGRect(self.splitView.frame));
-    
-//    NSLog(@"willAnimateRotationToInterfaceOrientation");
-//    // we grab the screen frame first off; these are always
-//    // in portrait mode
-//    CGRect bounds = [[UIScreen mainScreen] applicationFrame];
-//    CGSize size = bounds.size;
-//    
-//    NSLog(@"bounds.size: w:%f h:%f", size.width, size.height);
-//    
-//    // let's figure out if width/height must be swapped
-//    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-//        // we're going to landscape, which means we gotta swap them
-//        size.width = bounds.size.height;
-//        size.height = bounds.size.width;
-//    }
-//    // size is now the width and height that we will have after the rotation
-//    NSLog(@"size: w:%f h:%f", size.width, size.height);
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-
 }
 
 #pragma mark -
@@ -192,11 +153,11 @@
 #pragma mark -
 #pragma mark UITextFieldDelegate implementation
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
     [self.refresTimer invalidate];
     self.refresTimer = nil;
-    self.refresTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(refresh) userInfo:nil repeats:NO];
+    self.refresTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateWebView) userInfo:nil repeats:NO];
     
     return YES;
 }
@@ -205,9 +166,54 @@
 #pragma mark DraggableUIImageViewDelegate implementation
 
 -(void) setDraggableImageViewCenter:(CGPoint)point {
-    //
+    
     _draggableImageViewCenter = point;
     [self updateUI];
 }
 
 @end
+
+//-(void) viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    
+//    id html = [SundownWrapper convertMarkdownString:self.textView.text];
+//    //NSLog(@"html: %@", html);
+//    
+//    NSString *path = [[NSBundle mainBundle] bundlePath];
+//    NSURL *baseURL = [NSURL fileURLWithPath:path];
+//    
+//    //NSString *sampleHTML = @"<!DOCTYPE html><html><head><link rel=\"stylesheet\" href=\"bootstrap.min.css\" type=\"text/css\" /><link rel=\"stylesheet\" href=\"main.css\" type=\"text/css\" /></head><body><h1>My First Heading</h1><p>My first paragraph.</p></body></html>";
+//     
+//    NSString *sampleHTML = [NSString stringWithFormat:@"<!DOCTYPE html><html><head><link rel='stylesheet' href='bootstrap.min.css' type='text/css' /><link rel='stylesheet' href='main.css' type='text/css' /></head><body>%@</body></html>", html];
+//     
+//    [self.webView loadHTMLString:sampleHTML baseURL:baseURL];
+//    [self refresh];
+//}
+//- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    
+//}
+//
+//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    
+//    
+//        // we grab the screen frame first off; these are always
+//        // in portrait mode
+//        CGRect bounds = [[UIScreen mainScreen] applicationFrame];
+//        CGSize size = bounds.size;
+//    
+//        NSLog(@"bounds.size: w:%f h:%f", size.width, size.height);
+//    
+//        // let's figure out if width/height must be swapped
+//        if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+//            // we're going to landscape, which means we gotta swap them
+//            size.width = bounds.size.height;
+//            size.height = bounds.size.width;
+//        }
+//        // size is now the width and height that we will have after the rotation
+//        NSLog(@"size: w:%f h:%f", size.width, size.height);
+//}
+//
+//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//    
+//}
