@@ -108,13 +108,29 @@ MIT
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.62909731657608692" green="0.62909731657608692" blue="0.62909731657608692" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9xz-hz-SnJ">
+                                <rect key="frame" x="0.0" y="635" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Bold" id="cNf-It-dGM"/>
+                                    <barButtonItem title="Italic" id="8Wl-fI-BOc"/>
+                                    <barButtonItem title="Code" id="sUn-Zd-J0d"/>
+                                    <barButtonItem title="Hyperlink" id="DOu-F6-ije"/>
+                                    <barButtonItem title="Header 1" id="dsh-Ed-Fta"/>
+                                    <barButtonItem title="Image" id="CJa-9g-0q8"/>
+                                    <barButtonItem title="Quote" id="oqj-4h-bMF"/>
+                                </items>
+                                <color key="tintColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57282329262696208" blue="0.32932600681974789" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="accessoryView" destination="9xz-hz-SnJ" id="DYt-6Z-PwX"/>
                         <outlet property="splitView" destination="qbG-pH-H4e" id="tYQ-rH-k6q"/>
                         <outlet property="textView" destination="yBC-6Y-Cuu" id="XIz-6Z-TMf"/>
+                        <outlet property="toolbar" destination="dSx-CM-ufC" id="xxh-aF-bsj"/>
                         <outlet property="webView" destination="Wfs-Cv-k92" id="gvW-Wh-Ufs"/>
                     </connections>
                 </viewController>
@@ -130,8 +146,10 @@ MIT
         <class className="GWriteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="accessoryView" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>

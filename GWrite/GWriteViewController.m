@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet DraggableUIImageView *splitView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIToolbar *accessoryView;
 @property (assign, nonatomic) CGRect textViewFrame;
 @property (assign, nonatomic) CGRect webViewFrame;
 @property (strong, nonatomic) NSTimer *refresTimer;
@@ -40,7 +42,6 @@
     [self.splitView setBackgroundColor:backgroundColor];
     
     [self.splitView setDelegate:self];
-        
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -116,7 +117,6 @@
     float offset = keyboardFrame.size.height;
     //[UIDevice currentDevice].orientation
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
-        NSLog(@"code for landscape orientation");
         offset = keyboardFrame.size.width;
     }
     
@@ -125,6 +125,9 @@
 
 }
 
+//from http://nachbaur.com/blog/basics-positioning-uiviews
+//http://blog.initlabs.com/post/7115375694/how-to-detect-ios-device-orientation-on-load
+//http://stackoverflow.com/questions/2315177/from-willanimaterotationtointerfaceorientation-how-can-i-get-the-size-the-view-w
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self setDraggableImageViewCenter:self.splitView.center];
 }
@@ -159,6 +162,15 @@
     self.refresTimer = nil;
     self.refresTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateWebView) userInfo:nil repeats:NO];
     
+    return YES;
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    [self.accessoryView setHidden:NO];
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    [self.textView setInputAccessoryView:self.accessoryView];
     return YES;
 }
 
