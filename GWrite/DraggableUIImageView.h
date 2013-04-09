@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DraggableUIImageViewDelegate
+    @property (nonatomic, assign) CGPoint draggableImageViewCenter;
+@end
+
 @interface DraggableUIImageView : UIImageView
+{
+    
+}
+
+@property(nonatomic, weak) id <DraggableUIImageViewDelegate> delegate;
 
 @end
+

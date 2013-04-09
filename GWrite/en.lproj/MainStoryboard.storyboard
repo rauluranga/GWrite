@@ -141,7 +141,7 @@ MIT
         <class className="GWriteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="splitView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>

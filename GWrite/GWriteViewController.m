@@ -8,17 +8,21 @@
 
 #import "GWriteViewController.h"
 #import "SundownWrapper.h"
+#import "DraggableUIImageView.h"
 
-@interface GWriteViewController () <UITextViewDelegate>
+@interface GWriteViewController () <UITextViewDelegate, DraggableUIImageViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UIImageView *splitView;
+@property (weak, nonatomic) IBOutlet DraggableUIImageView *splitView;
 @property (assign, nonatomic) CGRect textViewFrame;
 @property (assign, nonatomic) CGRect webViewFrame;
+//@property (nonatomic, assign) CGPoint draggableImageViewCenter;
 
 @end
 
 @implementation GWriteViewController
+
+@synthesize draggableImageViewCenter = _draggableImageViewCenter;
 
 - (void)viewDidLoad
 {
@@ -29,8 +33,12 @@
     //Setup Inconsolata font
     [self.textView setFont:[UIFont fontWithName:@"Inconsolata" size:self.textView.font.pointSize]];
     
+    //from http://subtlepatterns.com/
     UIColor *backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"pattern"]];
     [self.splitView setBackgroundColor:backgroundColor];
+    
+    [self.splitView setDelegate:self];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -62,6 +70,22 @@
 {
     [super didReceiveMemoryWarning];
 }
+
+//TODO repleace magic numbers
+//TODO disable autolayout
+//TODO handle autorotation to update positions based on %.
+-(void) updateUI {
+    CGRect frame = self.textView.frame;
+    frame.size.width = self.draggableImageViewCenter.x - 20/2 - 8;
+    [self.textView setFrame:frame];
+    
+    
+    frame = self.webView.frame;
+    frame.origin.x = self.draggableImageViewCenter.x + 20/2 + 8;
+    frame.size.width = 1024 - frame.origin.x;
+    [self.webView setFrame:frame];
+}
+
 
 -(void) refresh {
     
@@ -102,6 +126,26 @@
 
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    // we grab the screen frame first off; these are always
+    // in portrait mode
+    CGRect bounds = [[UIScreen mainScreen] applicationFrame];
+    CGSize size = bounds.size;
+    
+    // let's figure out if width/height must be swapped
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+        // we're going to landscape, which means we gotta swap them
+        size.width = bounds.size.height;
+        size.height = bounds.size.width;
+    }
+    // size is now the width and height that we will have after the rotation
+    NSLog(@"size: w:%f h:%f", size.width, size.height);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    
+}
+
 #pragma mark -
 #pragma mark UIKeyboard Notifications
 
@@ -124,7 +168,7 @@
 }
 
 #pragma mark -
-#pragma mark UITextFieldDelegate protocl implementation
+#pragma mark UITextFieldDelegate implementation
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
@@ -132,6 +176,15 @@
         [self refresh];
     }
     return YES;
+}
+
+#pragma mark -
+#pragma mark DraggableUIImageViewDelegate implementation
+
+-(void) setDraggableImageViewCenter:(CGPoint)point {
+    //
+    _draggableImageViewCenter = point;
+    [self updateUI];
 }
 
 @end

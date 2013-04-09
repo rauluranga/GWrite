@@ -24,7 +24,6 @@
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    NSLog(@"touchesBegan");
     // Get active location upon move
     CGPoint activePoint = [[touches anyObject] locationInView:self];
     
@@ -54,6 +53,8 @@
     
     // Set new center location
     self.center = newPoint;
+    
+    [self.delegate setDraggableImageViewCenter:newPoint];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
