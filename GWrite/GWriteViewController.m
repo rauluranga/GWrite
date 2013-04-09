@@ -16,13 +16,14 @@
 @property (weak, nonatomic) IBOutlet DraggableUIImageView *splitView;
 @property (assign, nonatomic) CGRect textViewFrame;
 @property (assign, nonatomic) CGRect webViewFrame;
-//@property (nonatomic, assign) CGPoint draggableImageViewCenter;
+@property (strong, nonatomic) NSTimer *refresTimer;
 
 @end
 
 @implementation GWriteViewController
 
 @synthesize draggableImageViewCenter = _draggableImageViewCenter;
+@synthesize refresTimer = _refresTimer;
 
 - (void)viewDidLoad
 {
@@ -38,7 +39,7 @@
     [self.splitView setBackgroundColor:backgroundColor];
     
     [self.splitView setDelegate:self];
-    
+        
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -66,19 +67,28 @@
     [self refresh];
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setDraggableImageViewCenter:self.splitView.center];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
 //TODO repleace magic numbers
-//TODO disable autolayout
-//TODO handle autorotation to update positions based on %.
 -(void) updateUI {
     CGRect frame = self.textView.frame;
-    frame.size.width = self.draggableImageViewCenter.x - 20/2 - 8;
+    CGFloat targetWidth = self.draggableImageViewCenter.x - 20/2 - 8;
+    if (targetWidth < 1) {
+        targetWidth = 1;
+    }
+    frame.size.width = targetWidth;
     [self.textView setFrame:frame];
     
+    //NSLog(@"textViewFrame: %@", NSStringFromCGRect(frame));
     
     frame = self.webView.frame;
     frame.origin.x = self.draggableImageViewCenter.x + 20/2 + 8;
@@ -126,24 +136,36 @@
 
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    // we grab the screen frame first off; these are always
-    // in portrait mode
-    CGRect bounds = [[UIScreen mainScreen] applicationFrame];
-    CGSize size = bounds.size;
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
-    // let's figure out if width/height must be swapped
-    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        // we're going to landscape, which means we gotta swap them
-        size.width = bounds.size.height;
-        size.height = bounds.size.width;
-    }
-    // size is now the width and height that we will have after the rotation
-    NSLog(@"size: w:%f h:%f", size.width, size.height);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    [self setDraggableImageViewCenter:self.splitView.center];
+  
+//    NSLog(@"splitViewFrame: %@",  NSStringFromCGRect(self.splitView.frame));
+    
+//    NSLog(@"willAnimateRotationToInterfaceOrientation");
+//    // we grab the screen frame first off; these are always
+//    // in portrait mode
+//    CGRect bounds = [[UIScreen mainScreen] applicationFrame];
+//    CGSize size = bounds.size;
+//    
+//    NSLog(@"bounds.size: w:%f h:%f", size.width, size.height);
+//    
+//    // let's figure out if width/height must be swapped
+//    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+//        // we're going to landscape, which means we gotta swap them
+//        size.width = bounds.size.height;
+//        size.height = bounds.size.width;
+//    }
+//    // size is now the width and height that we will have after the rotation
+//    NSLog(@"size: w:%f h:%f", size.width, size.height);
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    
+
 }
 
 #pragma mark -
@@ -172,9 +194,10 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if ( [text isEqualToString:@"\n"] ) {
-        [self refresh];
-    }
+    [self.refresTimer invalidate];
+    self.refresTimer = nil;
+    self.refresTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(refresh) userInfo:nil repeats:NO];
+    
     return YES;
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -12,7 +12,9 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBC-6Y-Cuu">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="yBC-6Y-Cuu">
+                                <rect key="frame" x="0.0" y="44" width="366" height="960"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Dillinger
 =========
@@ -89,38 +91,25 @@ MIT
                                     <outlet property="delegate" destination="2" id="vvG-2E-s1n"/>
                                 </connections>
                             </textView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfs-Cv-k92">
+                            <webView contentMode="scaleToFill" id="Wfs-Cv-k92">
+                                <rect key="frame" x="402" y="44" width="366" height="960"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSx-CM-ufC">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dSx-CM-ufC">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <barButtonItem title="Item" id="AXx-Q2-snb"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbG-pH-H4e" customClass="DraggableUIImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="qbG-pH-H4e" customClass="DraggableUIImageView">
+                                <rect key="frame" x="374" y="44" width="20" height="960"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.62909731657608692" green="0.62909731657608692" blue="0.62909731657608692" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="xZD-bU-csU"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.57282329262696208" blue="0.32932600681974789" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="dSx-CM-ufC" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="3S8-Yb-1F2"/>
-                            <constraint firstItem="qbG-pH-H4e" firstAttribute="top" secondItem="dSx-CM-ufC" secondAttribute="bottom" type="default" id="AVZ-Bd-Ceq"/>
-                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="top" secondItem="qbG-pH-H4e" secondAttribute="top" type="default" id="Ary-xZ-wOw"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="leading" secondItem="qbG-pH-H4e" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Cbl-3a-SrW"/>
-                            <constraint firstItem="qbG-pH-H4e" firstAttribute="centerX" secondItem="dSx-CM-ufC" secondAttribute="centerX" type="default" id="GNY-eV-XzL"/>
-                            <constraint firstItem="dSx-CM-ufC" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="MXf-fG-D8h"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="S4F-4O-ciJ"/>
-                            <constraint firstItem="qbG-pH-H4e" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="Tgn-Cd-kuh"/>
-                            <constraint firstItem="qbG-pH-H4e" firstAttribute="leading" secondItem="yBC-6Y-Cuu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="YqQ-i7-XHX"/>
-                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="bDe-af-aCX"/>
-                            <constraint firstItem="yBC-6Y-Cuu" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="ftF-Wl-ZuO"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="top" secondItem="qbG-pH-H4e" secondAttribute="top" type="default" id="gEC-iz-Ac6"/>
-                            <constraint firstItem="Wfs-Cv-k92" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="gYQ-ix-ZPI"/>
-                            <constraint firstItem="dSx-CM-ufC" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="vAY-Gn-Px0"/>
-                        </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -145,9 +134,6 @@ MIT
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
