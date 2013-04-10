@@ -1,11 +1,13 @@
-
 PODS:
-- sundown (0.1.0)
+  - RegexKitLite (4.0)
+  - sundown (0.1.0)
 
 DEPENDENCIES:
-- sundown (~> 0.1.0)
+  - RegexKitLite (~> 4.0)
+  - sundown (~> 0.1.0)
 
 SPEC CHECKSUMS:
+  RegexKitLite: 293ff6f3cf8f34277989a37802162c6961a2b35a
   sundown: f0b86bd08ee36f84e9e6a6332d3cbd0309889dfa
 
-COCOAPODS: 0.16.3
+COCOAPODS: 0.17.2

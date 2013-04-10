@@ -9,6 +9,7 @@
 #import "GWriteViewController.h"
 #import "SundownWrapper.h"
 #import "DraggableUIImageView.h"
+#import "RegexKitLite.h"
 
 @interface GWriteViewController () <UITextViewDelegate, DraggableUIImageViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -182,6 +183,101 @@
     _draggableImageViewCenter = point;
     [self updateUI];
 }
+
+#pragma mark -
+#pragma mark Toolbar AccessoryView handlers
+
+//@see http://blog.carbonfive.com/2012/03/12/customizing-the-ios-keyboard/
+//@see http://www.theappcodeblog.com/2011/02/27/keyboard-tutorial-part-3-add-a-toolbar-to-the-keyboard/
+
+
+//@see http://rubular.com/
+//@see https://gist.github.com/jbroadway/2836900
+//    '/(#+)(.*)/e' => 'self::header (\'\\1\', \'\\2\')',       // headers
+//    '/\[([^\[]+)\]\(([^\)]+)\)/' => '<a href=\'\2\'>\1</a>',  // links
+//    '/(\*\*|__)(.*?)\1/' => '<strong>\2</strong>',            // bold
+//    '/(\*|_)(.*?)\1/' => '<em>\2</em>',                       // emphasis
+//    '/\~\~(.*?)\~\~/' => '<del>\1</del>',                     // del
+//    '/\:\"(.*?)\"\:/' => '<q>\1</q>',                         // quote
+//    '/\n\*(.*)/e' => 'self::ul_list (\'\\1\')',               // ul lists
+//    '/\n[0-9]+\.(.*)/e' => 'self::ol_list (\'\\1\')',         // ol lists
+//    '/\n&gt;(.*)/e' => 'self::blockquote (\'\\1\')',          // blockquotes
+//    '/\n([^\n]+)\n/e' => 'self::para (\'\\1\')',              // add paragraphs
+//    '/<\/ul><ul>/' => '',                                     // fix extra ul
+//    '/<\/ol><ol>/' => '',                                     // fix extra ol
+//    '/<\/blockquote><blockquote>/' => "\n"                    // fix extra blockquote
+
+- (IBAction)toggleStrong:(id)sender {
+    UITextRange *selectedTextRange = self.textView.selectedTextRange;
+    NSString *selectedText = [self.textView textInRange:selectedTextRange];
+    
+    if (selectedTextRange == nil) {
+    
+        //no selection or insertion point
+    
+    } else if (selectedTextRange.empty) {
+      
+        //inserting text at an insertion point
+        //...
+        [self.textView replaceRange:selectedTextRange withText:@"**"];
+    
+    } else {
+        
+        //updated a selected range
+        //...
+        
+        NSString *regEx = @"(\\*\\*|__)(.*?)\\1";
+        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+        NSLog(@"numOfMatches: %d", numOfMatches);
+        
+        if (numOfMatches > 0) {
+            
+            NSString *replacedString;
+            NSString *replaceWithString = @"$2";
+            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx withString:replaceWithString];
+            
+            [self.textView replaceRange:selectedTextRange withText:replacedString];
+            
+        } else {
+            
+            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"**%@**", [self.textView textInRange:selectedTextRange]]];
+            
+        }
+        
+        // THIS ALSO WORKS
+//
+//        NSString *regEx = @"\\*\\*(.*?)\\*\\*";        
+//        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+//        
+//        NSLog(@"numOfMatches: %d", numOfMatches);
+//        
+//        // if we found any matches for strong tokens
+//        if ( numOfMatches > 0) {
+//            
+//            NSString *replacedString;
+//            //*/
+//            //remove strong markup
+//            NSString *replaceWithString = [@"$1" stringByReplacingOccurrencesOfString:@"**" withString:@""]; // THIS STEP IS REMOVED IN ABOVE CODE
+//            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx withString:replaceWithString];
+//            /*/
+//            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx
+//                                                                    usingBlock:^NSString *(NSInteger captureCount, NSString * const capturedStrings[captureCount], const NSRange capturedRanges[captureCount], volatile BOOL * const stop) {
+//                                                                        
+//                                                                              return [capturedStrings[1] stringByReplacingOccurrencesOfString:@"**" withString:@""];
+//                                                                          }];
+//            //*/
+//            NSLog(@"replacedString: %@", replacedString);
+//            
+//            [self.textView replaceRange:selectedTextRange withText:replacedString];
+//            
+//        } else {
+//            
+//            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"**%@**", [self.textView textInRange:selectedTextRange]]];
+//        }
+        
+    }
+}
+
 
 @end
 

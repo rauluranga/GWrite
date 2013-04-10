@@ -112,7 +112,11 @@ MIT
                                 <rect key="frame" x="0.0" y="635" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Bold" id="cNf-It-dGM"/>
+                                    <barButtonItem title="Bold" id="cNf-It-dGM">
+                                        <connections>
+                                            <action selector="toggleStrong:" destination="2" id="2j2-fO-CHW"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Italic" id="8Wl-fI-BOc"/>
                                     <barButtonItem title="Code" id="sUn-Zd-J0d"/>
                                     <barButtonItem title="Hyperlink" id="DOu-F6-ije"/>
@@ -146,6 +150,7 @@ MIT
         <class className="GWriteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
             <relationships>
+                <relationship kind="action" name="toggleStrong:"/>
                 <relationship kind="outlet" name="accessoryView" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>
                 <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
