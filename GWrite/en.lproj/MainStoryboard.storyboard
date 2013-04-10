@@ -14,9 +14,9 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="yBC-6Y-Cuu">
                                 <rect key="frame" x="0.0" y="44" width="366" height="960"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Dillinger
+                                <mutableString key="text">Dillinger
 =========
 
 Dillinger is a cloud-enabled HTML5 Markdown editor.
@@ -84,7 +84,7 @@ MIT
   [jQuery]: http://jquery.com  
   [@tjholowaychuk]: http://twitter.com/tjholowaychuk
   [express]: http://expressjs.com
-  </string>
+  </mutableString>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
@@ -93,7 +93,7 @@ MIT
                             </textView>
                             <webView contentMode="scaleToFill" id="Wfs-Cv-k92">
                                 <rect key="frame" x="402" y="44" width="366" height="960"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dSx-CM-ufC">
@@ -109,7 +109,7 @@ MIT
                                 <color key="backgroundColor" red="0.62909731657608692" green="0.62909731657608692" blue="0.62909731657608692" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9xz-hz-SnJ">
-                                <rect key="frame" x="0.0" y="635" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="880" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Bold" id="cNf-It-dGM">
@@ -117,7 +117,11 @@ MIT
                                             <action selector="toggleStrong:" destination="2" id="2j2-fO-CHW"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Italic" id="8Wl-fI-BOc"/>
+                                    <barButtonItem title="Italic" id="8Wl-fI-BOc">
+                                        <connections>
+                                            <action selector="toggleEmphasis:" destination="2" id="Mm8-ye-Twv"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Code" id="sUn-Zd-J0d"/>
                                     <barButtonItem title="Hyperlink" id="DOu-F6-ije"/>
                                     <barButtonItem title="Header 1" id="dsh-Ed-Fta"/>
@@ -143,22 +147,6 @@ MIT
             <point key="canvasLocation" x="-72" y="-490"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DraggableUIImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DraggableUIImageView.h"/>
-        </class>
-        <class className="GWriteViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleStrong:"/>
-                <relationship kind="outlet" name="accessoryView" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
