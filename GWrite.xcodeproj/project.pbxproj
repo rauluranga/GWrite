@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		53AC11BFF61240B1A8E74509 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B512B9B203604287942719B5 /* libPods.a */; };
+		C434533F17161775004969F0 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C434533E17161775004969F0 /* NoteView.m */; };
+		C434534217161F90004969F0 /* NumberedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C434534117161F90004969F0 /* NumberedTextView.m */; };
 		C49EC2D4170F55CA00DB1219 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49EC2D3170F55CA00DB1219 /* UIKit.framework */; };
 		C49EC2D6170F55CA00DB1219 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49EC2D5170F55CA00DB1219 /* Foundation.framework */; };
 		C49EC2D8170F55CA00DB1219 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49EC2D7170F55CA00DB1219 /* CoreGraphics.framework */; };
@@ -45,6 +47,10 @@
 /* Begin PBXFileReference section */
 		880775585B164D139D6259D0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B512B9B203604287942719B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C434533D17161775004969F0 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
+		C434533E17161775004969F0 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
+		C434534017161F90004969F0 /* NumberedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberedTextView.h; sourceTree = "<group>"; };
+		C434534117161F90004969F0 /* NumberedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberedTextView.m; sourceTree = "<group>"; };
 		C49EC2D0170F55CA00DB1219 /* GWrite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GWrite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C49EC2D3170F55CA00DB1219 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C49EC2D5170F55CA00DB1219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,6 +150,10 @@
 				C49EC2EE170F55CA00DB1219 /* GWriteViewController.h */,
 				C49EC2EF170F55CA00DB1219 /* GWriteViewController.m */,
 				C49EC2DA170F55CA00DB1219 /* Supporting Files */,
+				C434533D17161775004969F0 /* NoteView.h */,
+				C434533E17161775004969F0 /* NoteView.m */,
+				C434534017161F90004969F0 /* NumberedTextView.h */,
+				C434534117161F90004969F0 /* NumberedTextView.m */,
 			);
 			path = GWrite;
 			sourceTree = "<group>";
@@ -321,6 +331,8 @@
 				C49EC2E4170F55CA00DB1219 /* GWriteAppDelegate.m in Sources */,
 				C49EC2F0170F55CA00DB1219 /* GWriteViewController.m in Sources */,
 				C4C34B56171381F800B31C68 /* DraggableUIImageView.m in Sources */,
+				C434533F17161775004969F0 /* NoteView.m in Sources */,
+				C434534217161F90004969F0 /* NumberedTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

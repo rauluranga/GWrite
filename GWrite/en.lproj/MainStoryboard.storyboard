@@ -122,9 +122,17 @@ MIT
                                             <action selector="toggleEmphasis:" destination="2" id="Mm8-ye-Twv"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Code" id="sUn-Zd-J0d"/>
+                                    <barButtonItem title="Code" id="sUn-Zd-J0d">
+                                        <connections>
+                                            <action selector="toggleCode:" destination="2" id="Plh-Ge-vyL"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Hyperlink" id="DOu-F6-ije"/>
-                                    <barButtonItem title="Header 1" id="dsh-Ed-Fta"/>
+                                    <barButtonItem title="Header 1" id="dsh-Ed-Fta">
+                                        <connections>
+                                            <action selector="toggleHeader:" destination="2" id="MqU-yX-1B7"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Image" id="CJa-9g-0q8"/>
                                     <barButtonItem title="Quote" id="oqj-4h-bMF"/>
                                 </items>
@@ -147,6 +155,25 @@ MIT
             <point key="canvasLocation" x="-72" y="-490"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DraggableUIImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DraggableUIImageView.h"/>
+        </class>
+        <class className="GWriteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleCode:"/>
+                <relationship kind="action" name="toggleEmphasis:"/>
+                <relationship kind="action" name="toggleHeader:"/>
+                <relationship kind="action" name="toggleStrong:"/>
+                <relationship kind="outlet" name="accessoryView" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

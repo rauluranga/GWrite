@@ -219,7 +219,9 @@
       
         //inserting text at an insertion point
         //...
-        [self.textView replaceRange:selectedTextRange withText:@"**"];
+        [self.textView replaceRange:selectedTextRange withText:@"****"];
+        
+        [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 2, 0)];
     
     } else {
         
@@ -310,6 +312,87 @@
         }
         
     }
+}
+
+- (IBAction)toggleCode:(id)sender {
+    
+    UITextRange *selectedTextRange = self.textView.selectedTextRange;
+    NSString *selectedText = [self.textView textInRange:selectedTextRange];
+    
+    if (selectedTextRange == nil) {
+        
+        //no selection or insertion point
+        
+    } else if (selectedTextRange.empty) {
+        
+        //inserting text at an insertion point
+        //...
+        [self.textView replaceRange:selectedTextRange withText:@"`"];
+        
+    } else {
+        
+        //updated a selected range
+        //...
+        
+        NSString *regEx = @"(\\`)(.*?)\\1";
+        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+        NSLog(@"numOfMatches: %d", numOfMatches);
+        
+        if (numOfMatches > 0) {
+            
+            NSString *replacedString;
+            NSString *replaceWithString = @"$2";
+            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx withString:replaceWithString];
+            
+            [self.textView replaceRange:selectedTextRange withText:replacedString];
+            
+        } else {
+            
+            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"`%@`", selectedText]];
+            
+        }
+    }
+}
+
+- (IBAction)toggleHeader:(id)sender {
+    
+    UITextRange *selectedTextRange = self.textView.selectedTextRange;
+    NSString *selectedText = [self.textView textInRange:selectedTextRange];
+    
+    if (selectedTextRange == nil) {
+        
+        //no selection or insertion point
+        
+    } else if (selectedTextRange.empty) {
+        
+        //inserting text at an insertion point
+        //...
+        [self.textView replaceRange:selectedTextRange withText:@"#"];
+        
+    } else {
+        
+        //updated a selected range
+        //...
+        
+        NSString *regEx = @"(\\#)(.*?)\\1";
+        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+        NSLog(@"numOfMatches: %d", numOfMatches);
+        
+        if (numOfMatches > 0) {
+            
+            NSString *replacedString;
+            NSString *replaceWithString = @"$2";
+            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx withString:replaceWithString];
+            
+            [self.textView replaceRange:selectedTextRange withText:replacedString];
+            
+        } else {
+            
+            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"#%@#", selectedText]];
+            
+        }
+    }
+    
 }
 
 @end
