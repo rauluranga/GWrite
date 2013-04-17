@@ -466,6 +466,40 @@
     
 }
 
+
+- (IBAction)toggleBlockquote:(id)sender {
+    
+    UITextRange *selectedTextRange = self.textView.selectedTextRange;
+    NSString *selectedText = [self.textView textInRange:selectedTextRange];
+    
+    if (selectedTextRange.empty) {
+        
+        [self.textView replaceRange:selectedTextRange withText:@"> "];
+        
+    } else {
+        
+        NSString *regEx = @"(> *)(.*)";
+        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+        NSLog(@"numOfMatches: %d", numOfMatches);
+        
+        if (numOfMatches > 0) {
+            
+            NSString *replacedString;
+            NSString *replaceWithString = @"$2";
+            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx withString:replaceWithString];
+            
+            [self.textView replaceRange:selectedTextRange withText:replacedString];
+            
+        } else {
+            
+            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"> %@", [self.textView textInRange:selectedTextRange]]];
+        }
+        
+    }
+}
+
+
+
 @end
 
 //-(void) viewWillAppear:(BOOL)animated

@@ -142,7 +142,11 @@ MIT
                                             <action selector="toggleImage:" destination="2" id="xZN-x2-jEu"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Quote" id="oqj-4h-bMF"/>
+                                    <barButtonItem title="Blockquotes" id="oqj-4h-bMF">
+                                        <connections>
+                                            <action selector="toggleBlockquote:" destination="2" id="gDH-5v-hyA"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -170,6 +174,7 @@ MIT
         <class className="GWriteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
             <relationships>
+                <relationship kind="action" name="toggleBlockquote:"/>
                 <relationship kind="action" name="toggleCode:"/>
                 <relationship kind="action" name="toggleEmphasis:"/>
                 <relationship kind="action" name="toggleHeader:"/>
