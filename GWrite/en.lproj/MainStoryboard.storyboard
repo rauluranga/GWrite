@@ -16,7 +16,7 @@
                                 <rect key="frame" x="0.0" y="44" width="366" height="960"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">Dillinger
+                                <string key="text">Dillinger
 =========
 
 Dillinger is a cloud-enabled HTML5 Markdown editor.
@@ -84,7 +84,7 @@ MIT
   [jQuery]: http://jquery.com  
   [@tjholowaychuk]: http://twitter.com/tjholowaychuk
   [express]: http://expressjs.com
-  </mutableString>
+  </string>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
@@ -127,7 +127,11 @@ MIT
                                             <action selector="toggleCode:" destination="2" id="Plh-Ge-vyL"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Hyperlink" id="DOu-F6-ije"/>
+                                    <barButtonItem title="Hyperlink" id="DOu-F6-ije">
+                                        <connections>
+                                            <action selector="toggleHyperlink:" destination="2" id="u6p-i3-1np"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Header 1" id="dsh-Ed-Fta">
                                         <connections>
                                             <action selector="toggleHeader:" destination="2" id="MqU-yX-1B7"/>
@@ -165,6 +169,7 @@ MIT
                 <relationship kind="action" name="toggleCode:"/>
                 <relationship kind="action" name="toggleEmphasis:"/>
                 <relationship kind="action" name="toggleHeader:"/>
+                <relationship kind="action" name="toggleHyperlink:"/>
                 <relationship kind="action" name="toggleStrong:"/>
                 <relationship kind="outlet" name="accessoryView" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>

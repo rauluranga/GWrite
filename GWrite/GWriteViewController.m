@@ -103,7 +103,7 @@
         
         id html = [SundownWrapper convertMarkdownString:rawText];
         
-        NSLog(@"%@", html);
+        //NSLog(@"%@", html);
         
         NSString *sampleHTML = [NSString stringWithFormat:@"<!DOCTYPE html><html><head><link rel='stylesheet' href='bootstrap.min.css' type='text/css' /><link rel='stylesheet' href='main.css' type='text/css' /></head><body>%@</body></html>", html];
         
@@ -362,23 +362,14 @@
     UITextRange *selectedTextRange = self.textView.selectedTextRange;
     NSString *selectedText = [self.textView textInRange:selectedTextRange];
     
-    if (selectedTextRange == nil) {
+   if (selectedTextRange.empty) {
         
-        //no selection or insertion point
-        
-    } else if (selectedTextRange.empty) {
-        
-        //inserting text at an insertion point
-        //...
         [self.textView replaceRange:selectedTextRange withText:@"#"];
         
     } else {
         
-        //updated a selected range
-        //...
-        
-        NSString *regEx = @"(\\#)(.*?)\\1";
-        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+        NSString *regEx = @"(#+)(.*)";
+        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx ] count];
         NSLog(@"numOfMatches: %d", numOfMatches);
         
         if (numOfMatches > 0) {
@@ -391,9 +382,49 @@
             
         } else {
             
-            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"#%@#", selectedText]];
+            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"#%@", selectedText]];
             
         }
+    }
+    
+}
+
+- (IBAction)toggleHyperlink:(id)sender {
+    
+    UITextRange *selectedTextRange = self.textView.selectedTextRange;
+    NSString *selectedText = [self.textView textInRange:selectedTextRange];
+    
+    if (selectedTextRange.empty) {
+        
+        [self.textView replaceRange:selectedTextRange withText:@"[]"];
+        
+        [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 1, 0)];
+        
+    } else {
+        
+        //updated a selected range
+        //...
+        
+        NSString *regEx = @"\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
+        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+        NSLog(@"numOfMatches: %d", numOfMatches);
+        
+        if (numOfMatches > 0) {
+            
+            NSString *replacedString;
+            NSString *replaceWithString = @"$1";
+            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx withString:replaceWithString];
+            
+            [self.textView replaceRange:selectedTextRange withText:replacedString];
+            
+        } else {
+            
+            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"[%@](http://)", [self.textView textInRange:selectedTextRange]]];
+            
+            [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 1, 0)];
+            
+        }
+        
     }
     
 }
