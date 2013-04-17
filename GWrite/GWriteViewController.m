@@ -429,6 +429,43 @@
     
 }
 
+- (IBAction)toggleImage:(id)sender {
+    
+    UITextRange *selectedTextRange = self.textView.selectedTextRange;
+    NSString *selectedText = [self.textView textInRange:selectedTextRange];
+    
+    if (selectedTextRange.empty) {
+        
+        [self.textView replaceRange:selectedTextRange withText:@"![Alt Text](http://)"];
+        
+        [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 1, 0)];
+        
+    } else {
+        
+        NSString *regEx = @"\\!\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
+        NSUInteger numOfMatches = [[selectedText componentsMatchedByRegex:regEx] count];
+        NSLog(@"numOfMatches: %d", numOfMatches);
+        
+        if (numOfMatches > 0) {
+            
+            NSString *replacedString;
+            NSString *replaceWithString = @"$1";
+            replacedString = [selectedText stringByReplacingOccurrencesOfRegex:regEx withString:replaceWithString];
+            
+            [self.textView replaceRange:selectedTextRange withText:replacedString];
+            
+        } else {
+            
+            [self.textView replaceRange:selectedTextRange withText:[NSString stringWithFormat:@"![%@](http://)", [self.textView textInRange:selectedTextRange]]];
+            
+            [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 1, 0)];
+            
+        }
+        
+    }
+    
+}
+
 @end
 
 //-(void) viewWillAppear:(BOOL)animated

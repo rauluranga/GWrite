@@ -137,7 +137,11 @@ MIT
                                             <action selector="toggleHeader:" destination="2" id="MqU-yX-1B7"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Image" id="CJa-9g-0q8"/>
+                                    <barButtonItem title="Image" id="CJa-9g-0q8">
+                                        <connections>
+                                            <action selector="toggleImage:" destination="2" id="xZN-x2-jEu"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Quote" id="oqj-4h-bMF"/>
                                 </items>
                                 <color key="tintColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,6 +174,7 @@ MIT
                 <relationship kind="action" name="toggleEmphasis:"/>
                 <relationship kind="action" name="toggleHeader:"/>
                 <relationship kind="action" name="toggleHyperlink:"/>
+                <relationship kind="action" name="toggleImage:"/>
                 <relationship kind="action" name="toggleStrong:"/>
                 <relationship kind="outlet" name="accessoryView" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>
