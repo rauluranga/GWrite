@@ -11,6 +11,8 @@
 #import "DraggableUIImageView.h"
 #import "RegexKitLite.h"
 
+#define SPACE 8.0
+
 @interface GWriteViewController () <UITextViewDelegate, DraggableUIImageViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -68,22 +70,23 @@
     [super didReceiveMemoryWarning];
 }
 
-//TODO repleace magic numbers
 -(void) updateUI {
     
+    
     CGRect frame = self.textView.frame;
-    CGFloat targetWidth = self.draggableImageViewCenter.x - 20/2 - 8;
+    CGFloat targetWidth = self.draggableImageViewCenter.x - self.splitView.frame.size.width/2 - SPACE;
     if (targetWidth < 1) {
         targetWidth = 1;
     }
     frame.size.width = targetWidth;
     [self.textView setFrame:frame];
     
-    //NSLog(@"textViewFrame: %@", NSStringFromCGRect(frame));
-    
     frame = self.webView.frame;
-    frame.origin.x = self.draggableImageViewCenter.x + 20/2 + 8;
-    frame.size.width = 1024 - frame.origin.x;
+    frame.origin.x = self.draggableImageViewCenter.x + self.splitView.frame.size.width/2 + SPACE;
+    
+    CGFloat screenWidth = UIDeviceOrientationIsLandscape(self.interfaceOrientation) ? 1024 : 768;
+    
+    frame.size.width = screenWidth - frame.origin.x;
     [self.webView setFrame:frame];
 }
 
