@@ -11,7 +11,7 @@
 #import "DraggableUIImageView.h"
 #import "RegexKitLite.h"
 
-#define SPACE 8.0
+#define SPACE 2.0
 
 @interface GWriteViewController () <UITextViewDelegate, DraggableUIImageViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
