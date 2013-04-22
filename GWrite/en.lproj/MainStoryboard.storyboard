@@ -4,6 +4,109 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Table View Controller - Root View Controller-->
+        <scene sceneID="pcA-7H-kfK">
+            <objects>
+                <tableViewController id="pxP-3u-bOg" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VaG-wQ-VtN">
+                        <rect key="frame" x="0.0" y="64" width="768" height="911"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1mm-uY-djy">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="bwL-Gv-4Rw"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tt-xS-fw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2838" y="-2183"/>
+        </scene>
+        <!--Navigation Controller - DropBox-->
+        <scene sceneID="QD9-ir-MjN">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="cmt-xj-Att" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="DropBox" id="5bF-xZ-QDX"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MVM-1d-vkS">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pxP-3u-bOg" kind="relationship" relationship="rootViewController" id="ILM-AZ-4Fe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jt9-1A-otP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="-2182"/>
+        </scene>
+        <!--Table View Controller - Root View Controller-->
+        <scene sceneID="wlz-3e-Bi9">
+            <objects>
+                <tableViewController id="Fk3-md-MJc" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="alJ-fe-M4c">
+                        <rect key="frame" x="0.0" y="64" width="768" height="911"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7UF-bK-A2E">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Z2I-vW-oqh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GqX-TL-RSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2849" y="-978"/>
+        </scene>
+        <!--Navigation Controller - Local-->
+        <scene sceneID="GZP-J5-7Cc">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="gUm-Mg-KnS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Local" id="lrS-aV-wc4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ktx-OZ-15V">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Fk3-md-MJc" kind="relationship" relationship="rootViewController" id="SNS-kk-jqT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldV-UF-tQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1869" y="-981"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="gta-32-Yza">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="MHp-dA-QVz" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="g35-EB-eCz">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="gUm-Mg-KnS" kind="relationship" relationship="viewControllers" id="BUt-DU-5kL"/>
+                        <segue destination="cmt-xj-Att" kind="relationship" relationship="viewControllers" id="tx4-Et-pia"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3xD-6W-ffh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="-1705"/>
+        </scene>
         <!--Write View Controller-->
         <scene sceneID="4">
             <objects>
@@ -100,7 +203,13 @@ MIT
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <barButtonItem title="Item" id="AXx-Q2-snb"/>
+                                    <barButtonItem title="FIles" id="AXx-Q2-snb">
+                                        <connections>
+                                            <segue destination="MHp-dA-QVz" kind="popover" identifier="showFiles:" popoverAnchorBarButtonItem="AXx-Q2-snb" id="GZ8-f2-4rf">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="qbG-pH-H4e" customClass="DraggableUIImageView">
@@ -167,28 +276,6 @@ MIT
             <point key="canvasLocation" x="-72" y="-490"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DraggableUIImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DraggableUIImageView.h"/>
-        </class>
-        <class className="GWriteViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GWriteViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleBlockquote:"/>
-                <relationship kind="action" name="toggleCode:"/>
-                <relationship kind="action" name="toggleEmphasis:"/>
-                <relationship kind="action" name="toggleHeader:"/>
-                <relationship kind="action" name="toggleHyperlink:"/>
-                <relationship kind="action" name="toggleImage:"/>
-                <relationship kind="action" name="toggleStrong:"/>
-                <relationship kind="outlet" name="accessoryView" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="splitView" candidateClass="DraggableUIImageView"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

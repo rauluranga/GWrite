@@ -136,6 +136,17 @@
     [self setDraggableImageViewCenter:self.splitView.center];
 }
 
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"showFiles:"]){
+        // Typical delegate setup.....
+        UIStoryboardPopoverSegue* ps = (UIStoryboardPopoverSegue*)segue;
+        [ps.popoverController setPopoverContentSize:CGSizeMake(320, 480)];
+        //self.popoverController = ps.popoverController;
+        //[self.popoverController setPassthroughViews:/* array of views */];
+    }
+}
+
 #pragma mark -
 #pragma mark UIKeyboard Notifications
 
