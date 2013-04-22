@@ -22,6 +22,7 @@
 @property (assign, nonatomic) CGRect textViewFrame;
 @property (assign, nonatomic) CGRect webViewFrame;
 @property (strong, nonatomic) NSTimer *refresTimer;
+@property (strong, nonatomic) UIPopoverController *directoryPopover;
 
 @end
 
@@ -136,14 +137,22 @@
     [self setDraggableImageViewCenter:self.splitView.center];
 }
 
+-(BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    //
+    if([identifier isEqualToString:@"showFiles:"]){
+        return !self.directoryPopover.popoverVisible;
+    }else {
+        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+    }
+}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"showFiles:"]){
         // Typical delegate setup.....
         UIStoryboardPopoverSegue* ps = (UIStoryboardPopoverSegue*)segue;
-        [ps.popoverController setPopoverContentSize:CGSizeMake(320, 480)];
-        //self.popoverController = ps.popoverController;
-        //[self.popoverController setPassthroughViews:/* array of views */];
+        self.directoryPopover = ps.popoverController;
+        [self.directoryPopover setPopoverContentSize:CGSizeMake(320, 480)];
     }
 }
 

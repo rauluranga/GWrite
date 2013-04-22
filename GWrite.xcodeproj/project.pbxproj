@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		53AC11BFF61240B1A8E74509 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B512B9B203604287942719B5 /* libPods.a */; };
+		C42530631725C09B00FDF20D /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = C42530581725C09B00FDF20D /* folder.png */; };
+		C42530641725C09B00FDF20D /* folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C42530591725C09B00FDF20D /* folder@2x.png */; };
+		C42530651725C09B00FDF20D /* GWFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C425305B1725C09B00FDF20D /* GWFile.m */; };
+		C42530661725C09B00FDF20D /* markdown.png in Resources */ = {isa = PBXBuildFile; fileRef = C425305C1725C09B00FDF20D /* markdown.png */; };
+		C42530671725C09B00FDF20D /* markdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C425305D1725C09B00FDF20D /* markdown@2x.png */; };
+		C42530681725C09B00FDF20D /* DirectoryContentManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C425305F1725C09B00FDF20D /* DirectoryContentManagerVC.m */; };
+		C42530691725C09B00FDF20D /* UIBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C42530621725C09B00FDF20D /* UIBAlertView.m */; };
+		C425306C1725C48F00FDF20D /* MarkdownContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C425306B1725C48F00FDF20D /* MarkdownContentVC.m */; };
 		C434533F17161775004969F0 /* NoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C434533E17161775004969F0 /* NoteView.m */; };
 		C434534217161F90004969F0 /* NumberedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C434534117161F90004969F0 /* NumberedTextView.m */; };
 		C49EC2D4170F55CA00DB1219 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49EC2D3170F55CA00DB1219 /* UIKit.framework */; };
@@ -47,6 +55,18 @@
 /* Begin PBXFileReference section */
 		880775585B164D139D6259D0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B512B9B203604287942719B5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C42530581725C09B00FDF20D /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		C42530591725C09B00FDF20D /* folder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder@2x.png"; sourceTree = "<group>"; };
+		C425305A1725C09B00FDF20D /* GWFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWFile.h; sourceTree = "<group>"; };
+		C425305B1725C09B00FDF20D /* GWFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWFile.m; sourceTree = "<group>"; };
+		C425305C1725C09B00FDF20D /* markdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markdown.png; sourceTree = "<group>"; };
+		C425305D1725C09B00FDF20D /* markdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "markdown@2x.png"; sourceTree = "<group>"; };
+		C425305E1725C09B00FDF20D /* DirectoryContentManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryContentManagerVC.h; sourceTree = "<group>"; };
+		C425305F1725C09B00FDF20D /* DirectoryContentManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryContentManagerVC.m; sourceTree = "<group>"; };
+		C42530611725C09B00FDF20D /* UIBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBAlertView.h; sourceTree = "<group>"; };
+		C42530621725C09B00FDF20D /* UIBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBAlertView.m; sourceTree = "<group>"; };
+		C425306A1725C48F00FDF20D /* MarkdownContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkdownContentVC.h; sourceTree = "<group>"; };
+		C425306B1725C48F00FDF20D /* MarkdownContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkdownContentVC.m; sourceTree = "<group>"; };
 		C434533D17161775004969F0 /* NoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteView.h; sourceTree = "<group>"; };
 		C434533E17161775004969F0 /* NoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteView.m; sourceTree = "<group>"; };
 		C434534017161F90004969F0 /* NumberedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberedTextView.h; sourceTree = "<group>"; };
@@ -107,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C42530601725C09B00FDF20D /* UIBAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				C42530611725C09B00FDF20D /* UIBAlertView.h */,
+				C42530621725C09B00FDF20D /* UIBAlertView.m */,
+			);
+			path = UIBAlertView;
+			sourceTree = "<group>";
+		};
 		C49EC2C7170F55CA00DB1219 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +171,13 @@
 		C49EC2D9170F55CA00DB1219 /* GWrite */ = {
 			isa = PBXGroup;
 			children = (
+				C425305A1725C09B00FDF20D /* GWFile.h */,
+				C425305B1725C09B00FDF20D /* GWFile.m */,
+				C425305E1725C09B00FDF20D /* DirectoryContentManagerVC.h */,
+				C425305F1725C09B00FDF20D /* DirectoryContentManagerVC.m */,
+				C425306A1725C48F00FDF20D /* MarkdownContentVC.h */,
+				C425306B1725C48F00FDF20D /* MarkdownContentVC.m */,
+				C42530601725C09B00FDF20D /* UIBAlertView */,
 				C4C34B54171381F800B31C68 /* DraggableUIImageView.h */,
 				C4C34B55171381F800B31C68 /* DraggableUIImageView.m */,
 				C49EC2E2170F55CA00DB1219 /* GWriteAppDelegate.h */,
@@ -161,6 +197,10 @@
 		C49EC2DA170F55CA00DB1219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C42530581725C09B00FDF20D /* folder.png */,
+				C42530591725C09B00FDF20D /* folder@2x.png */,
+				C425305C1725C09B00FDF20D /* markdown.png */,
+				C425305D1725C09B00FDF20D /* markdown@2x.png */,
 				C4C34B5B17138B9B00B31C68 /* pattern.png */,
 				C4C34B5C17138B9B00B31C68 /* pattern@2X.png */,
 				C4C34B52171379C400B31C68 /* Inconsolata.otf */,
@@ -279,6 +319,10 @@
 				C4C34B53171379C400B31C68 /* Inconsolata.otf in Resources */,
 				C4C34B5D17138B9B00B31C68 /* pattern.png in Resources */,
 				C4C34B5E17138B9B00B31C68 /* pattern@2X.png in Resources */,
+				C42530631725C09B00FDF20D /* folder.png in Resources */,
+				C42530641725C09B00FDF20D /* folder@2x.png in Resources */,
+				C42530661725C09B00FDF20D /* markdown.png in Resources */,
+				C42530671725C09B00FDF20D /* markdown@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +377,10 @@
 				C4C34B56171381F800B31C68 /* DraggableUIImageView.m in Sources */,
 				C434533F17161775004969F0 /* NoteView.m in Sources */,
 				C434534217161F90004969F0 /* NumberedTextView.m in Sources */,
+				C42530651725C09B00FDF20D /* GWFile.m in Sources */,
+				C42530681725C09B00FDF20D /* DirectoryContentManagerVC.m in Sources */,
+				C42530691725C09B00FDF20D /* UIBAlertView.m in Sources */,
+				C425306C1725C48F00FDF20D /* MarkdownContentVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
