@@ -7,7 +7,11 @@
 //
 
 #import "DirectoryContentManagerVC.h"
+#import "GWriteViewController.h"
 
-@interface MarkdownContentVC : DirectoryContentManagerVC
+@interface MarkdownContentVC : DirectoryContentManagerVC {
+    
+}
 
+@property(nonatomic, weak) GWriteViewController *delegate;
 @end

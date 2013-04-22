@@ -10,4 +10,6 @@
 
 @interface GWriteViewController : UIViewController
 
+-(void)displayContentsOfFile:(NSString *)contents;
+
 @end

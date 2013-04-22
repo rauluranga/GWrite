@@ -7,7 +7,6 @@
 //
 
 #import "DirectoryContentManagerVC.h"
-#import "GWFile.h"
 #import "UIBAlertView.h"
 
 #define ACTIONSHEET_TITLE @"Action Sheet Demo"
@@ -35,6 +34,10 @@
     return _rootPath;
 }
 
+-(GWFile *) getGWFileForRow:(NSUInteger) row {
+    return (GWFile *)self.folderContentList[row];
+}
+
 -(NSArray *) folderContentList {
     if (!_folderContentList) {
         
@@ -57,11 +60,6 @@
 
 -(NSString *) getNextFileName {
     return [NSString stringWithFormat:@"%@", [NSDate date]];
-}
-
-
--(GWFile *) getGWFileForRow:(NSUInteger) row {
-    return (GWFile *)self.folderContentList[row];
 }
 
 - (void)viewDidLoad

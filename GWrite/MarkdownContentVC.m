@@ -7,7 +7,6 @@
 //
 
 #import "MarkdownContentVC.h"
-#import "GWFile.h"
 
 @interface MarkdownContentVC ()
 
@@ -15,8 +14,22 @@
 
 @implementation MarkdownContentVC
 
+@synthesize delegate = _delegate;
+
 -(NSString *) getNextFileName {
     return [NSString stringWithFormat:@"%@.markdown", [NSDate date]];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    GWFile *file = [self getGWFileForRow:indexPath.row];
+    NSLog(@"file name: %@", file.fileName);
+    NSLog(@"isDirectory: %@", (file.isDirectory ? @"YES" : @"NO"));
+    
+    [self.delegate displayContentsOfFile:file.contents];
+    
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //NSString *cellText = cell.textLabel.text;
 }
 
 @end

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GWFile.h"
 
 @interface DirectoryContentManagerVC : UITableViewController {
     
 }
 @property (nonatomic, strong) NSString *rootPath;
+
+-(GWFile *) getGWFileForRow:(NSUInteger) row;
 
 @end

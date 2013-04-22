@@ -31,6 +31,15 @@
 @synthesize draggableImageViewCenter = _draggableImageViewCenter;
 @synthesize refresTimer = _refresTimer;
 
+-(void) displayContentsOfFile:(NSString *)contents {
+    if (self.directoryPopover.popoverVisible) {
+        [self.directoryPopover dismissPopoverAnimated:YES];
+    }
+    [self.textView setText:contents];
+    [self updateWebView];
+}
+
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -146,6 +155,19 @@
     }
 }
 
+-(void) waitForPopover {
+    if ([self.directoryPopover.contentViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController *) self.directoryPopover.contentViewController;
+        if ([tabBarController.selectedViewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *navController = (UINavigationController *) tabBarController.selectedViewController;
+            //NSLog(@"class: %@", NSStringFromClass([navController.topViewController class]));
+            if ([navController.topViewController respondsToSelector:@selector(setDelegate:)]) {
+                [navController.topViewController performSelector:@selector(setDelegate:) withObject:self afterDelay:0];
+            }
+        }
+    }
+}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"showFiles:"]){
@@ -153,6 +175,8 @@
         UIStoryboardPopoverSegue* ps = (UIStoryboardPopoverSegue*)segue;
         self.directoryPopover = ps.popoverController;
         [self.directoryPopover setPopoverContentSize:CGSizeMake(320, 480)];
+        
+        [self performSelector:@selector(waitForPopover) withObject:nil afterDelay:0];
     }
 }
 
