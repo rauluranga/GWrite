@@ -30,12 +30,19 @@
 
 @synthesize draggableImageViewCenter = _draggableImageViewCenter;
 @synthesize refresTimer = _refresTimer;
+@synthesize file = _file;
 
--(void) displayContentsOfFile:(NSString *)contents {
+-(void)setFile:(GWFile *)file {
+    
     if (self.directoryPopover.popoverVisible) {
         [self.directoryPopover dismissPopoverAnimated:YES];
     }
-    [self.textView setText:contents];
+    
+    if (_file == file) return;
+    
+    _file = [file copy];
+    
+    [self.textView setText:[_file contents]];
     [self updateWebView];
 }
 
@@ -221,6 +228,25 @@
     [self.textView setInputAccessoryView:self.accessoryView];
     return YES;
 }
+
+-(void) save {
+    
+    // Turn the text into data
+    NSData * textData = [self.textView.text dataUsingEncoding:NSUTF8StringEncoding];
+    NSError * error = nil;
+    
+    if ([self.file writeData:textData error:&error])
+        NSLog(@"File save success!");
+    else
+        NSLog(@"%@", [error localizedDescription]);
+}
+
+
+- (IBAction)performSave:(UIBarButtonItem *)sender {
+    [self save];
+}
+
+
 
 #pragma mark -
 #pragma mark DraggableUIImageViewDelegate implementation

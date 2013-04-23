@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GWFile.h"
 
-@interface GWriteViewController : UIViewController
+@interface GWriteViewController : UIViewController {
+    
+}
 
--(void)displayContentsOfFile:(NSString *)contents;
+@property(nonatomic, copy) GWFile *file;
 
 @end

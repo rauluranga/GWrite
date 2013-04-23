@@ -171,13 +171,13 @@
 		C49EC2D9170F55CA00DB1219 /* GWrite */ = {
 			isa = PBXGroup;
 			children = (
+				C42530601725C09B00FDF20D /* UIBAlertView */,
 				C425305A1725C09B00FDF20D /* GWFile.h */,
 				C425305B1725C09B00FDF20D /* GWFile.m */,
 				C425305E1725C09B00FDF20D /* DirectoryContentManagerVC.h */,
 				C425305F1725C09B00FDF20D /* DirectoryContentManagerVC.m */,
 				C425306A1725C48F00FDF20D /* MarkdownContentVC.h */,
 				C425306B1725C48F00FDF20D /* MarkdownContentVC.m */,
-				C42530601725C09B00FDF20D /* UIBAlertView */,
 				C4C34B54171381F800B31C68 /* DraggableUIImageView.h */,
 				C4C34B55171381F800B31C68 /* DraggableUIImageView.m */,
 				C49EC2E2170F55CA00DB1219 /* GWriteAppDelegate.h */,

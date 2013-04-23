@@ -10,7 +10,7 @@
 
 @implementation GWFile
 
-@synthesize path;
+@synthesize path = _path;
 
 + (id)fileFromDocuments:(NSString *)fileName {
     
@@ -29,11 +29,18 @@
         self.path = filePath;
     }
     return self;
+}
 
+- (id)copyWithZone:(NSZone *)zone {
+    id newfile = [[[self class] alloc] init];
+    if (newfile) {
+        [newfile setPath:[self.path copyWithZone:zone]];
+    }
+    return newfile;
 }
 
 - (BOOL)writeData:(NSData *)data error:(NSError **)error {
-     return [data writeToFile:path options:NSDataWritingAtomic error:error];
+     return [data writeToFile:self.path options:NSDataWritingAtomic error:error];
 }
 
 - (BOOL)delete:(NSError **)error {
@@ -41,7 +48,7 @@
     if ([self exists]) {
         
         NSFileManager * fileManager = [NSFileManager new];
-        return [fileManager removeItemAtPath:path error:error];
+        return [fileManager removeItemAtPath:self.path error:error];
         
     }
     

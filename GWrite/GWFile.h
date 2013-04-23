@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GWFile : NSObject {
+@interface GWFile : NSObject <NSCopying> {
     
 }
 

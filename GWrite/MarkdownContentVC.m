@@ -26,8 +26,7 @@
     NSLog(@"file name: %@", file.fileName);
     NSLog(@"isDirectory: %@", (file.isDirectory ? @"YES" : @"NO"));
     
-    [self.delegate displayContentsOfFile:file.contents];
-    
+    [self.delegate setFile:file];
     //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     //NSString *cellText = cell.textLabel.text;
 }
