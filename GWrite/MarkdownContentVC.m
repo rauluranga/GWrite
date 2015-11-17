@@ -25,7 +25,7 @@
     GWFile *file = [self getGWFileForRow:indexPath.row];
     NSLog(@"file name: %@", file.fileName);
     NSLog(@"isDirectory: %@", (file.isDirectory ? @"YES" : @"NO"));
-    
+        
     [self.delegate setFile:file];
     //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     //NSString *cellText = cell.textLabel.text;
